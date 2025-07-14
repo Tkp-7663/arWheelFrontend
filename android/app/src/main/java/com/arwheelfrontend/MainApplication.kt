@@ -18,6 +18,8 @@ class MainApplication : Application(), ReactApplication {
             PackageList(this).packages.apply {
               // Packages that cannot be autolinked yet can be added manually here, for example:
               // add(MyReactNativePackage())
+
+            add(ReactViroPackage(ReactViroPackage.ViroPlatform.valueOf("AR")))
             }
 
         override fun getJSMainModuleName(): String = "index"
@@ -30,7 +32,7 @@ class MainApplication : Application(), ReactApplication {
 
   override val reactHost: ReactHost
     get() = getDefaultReactHost(applicationContext, reactNativeHost)
-
+  override fun getReactNativeHost(): ReactNativeHost = reactNativeHost
   override fun onCreate() {
     super.onCreate()
     loadReactNative(this)
